@@ -1,6 +1,7 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import { EntityRepository, Repository } from 'typeorm';
 import { Currencies } from './currencies.entity';
+import { CurrencyInputType } from './types/currencies-input.type';
 
 @EntityRepository()
 export class CurrenciesRepository extends Repository<Currencies> {
@@ -12,10 +13,10 @@ export class CurrenciesRepository extends Repository<Currencies> {
     }
     return result;
   }
-  async createCurrency({ currency, value }): Promise<any> {
+  async createCurrency({ currency, value }: CurrencyInputType): Promise<any> {
     return new Currencies();
   }
-  async updateCurrency({ currency, value }): Promise<any> {
+  async updateCurrency({ currency, value }: CurrencyInputType): Promise<any> {
     return new Currencies();
   }
   async deleteCurrency(currency: string): Promise<any> {
